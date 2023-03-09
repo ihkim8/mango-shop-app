@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>망고샵</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div id="header">
+			<div id="header-area"><img src="images/icons/logo.png" alt="" /></div>
+		</div>
+		<div id="body">
+			<div id="banner"><img src="images/banners/banner1.png" alt="" /></div>
+			<h1>Products</h1>
+			<div id="product-list"></div>
+		</div>
+		<div id="footer">
+			<a href="#">회사소개</a>
+			<a href="#">이용약관</a>
+			<a href="#">통신판매업신고번호:123-1234</a>
+			<a href="#">사업자등록번호:456-56-78951</a>
+			<a href="#">고객센터:456-78951</a>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script>
+			//목서버와 연결하는 axios 프로그램을 작성해보세요
+			let url = "https://c6057dd3-f724-467a-a8d7-90e6cb1f3142.mock.pstmn.io/products";
+      let productHtml = "";
+			axios
+				.get(url)
+				.then((result) => {
+					const products=result.data.products;
+          
+          for (let i = 0; i < products.length; i++) {
+            let product = products[i];
+            console.log(product.imageUrl);
+            productHtml += `
+            <div class="product-card">
+      <div><img class="product-img" src=${product.imageUrl} alt="" /></div>
+      <div class="product-content">
+        <span class="product-name">${product.name}</span>
+        <span class="product-price">${product.price}</span>
+        <span class="product-seller">
+          <img src="images/icons/avatar.png" class="product-avatar" alt="" />
+          <span>${product.seller}</span>
+        </span>
+      </div>
+    </div>
+            `;
+          }
+         document.querySelector("#product-list").innerHTML = productHtml;
+				})
+				.catch((err) => {
+					console.error("error발생",err)
+				});
+
+
+		</script>
+	</body>
+</html>
