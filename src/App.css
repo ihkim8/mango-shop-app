@@ -1,6 +1,11 @@
 * {
 	margin: 0;
 	padding: 0;
+	line-height: 1;
+}
+a {
+	text-decoration: none;
+	color: #666;
 }
 #header {
 	height: 64px;
@@ -41,6 +46,7 @@
 	height: 100%;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 #header-area img {
 	width: 128px;
@@ -52,7 +58,6 @@
 }
 .product-card {
 	width: 180px;
-	height: 300px;
 	margin-right: 12px;
 	margin-bottom: 12px;
 	border: 1px solid rgba(230, 230, 230, 1);
@@ -78,8 +83,20 @@
 .product-seller {
 	display: flex;
 	align-items: center;
-	margin-top: 12px;
+	
 }
 .product-avatar {
 	width: 24px;
 }
+.product-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 12px;
+	font-size: 12px;
+}
+.product-date {
+	font-size: 12px;
+	color: #8a8a8a;
+}
+

@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
-import "./MainPage.css";
+import { Link } from "react-router-dom";
+import {API_URL} from "../config/constants";
 import axios from "axios";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+
 
 const MainPage = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
-		let url = "https://aa24146f-e0e1-4d7c-b63f-fa5b08f35ea5.mock.pstmn.io/products";
+		let url = `${API_URL}/products`;
 		axios
 			.get(url)
 			.then((result) => {
-				const products = result.data.products;
+				console.log(result);
+				const products = result.data.product;
 				setProducts(products);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}, []);
-	console.log(products);
 	return (
 		<div>
-			<div id="header">
-				<div id="header-area">
-					<img src="images/icons/logo.png" alt="" />
-				</div>
-			</div>
 			<div id="body">
 				<div id="banner">
 					<img src="images/banners/banner1.png" alt="" />
@@ -33,28 +33,28 @@ const MainPage = () => {
 					{products.map((product, idx) => {
 						return (
 							<div className="product-card" key={idx}>
-								<div>
-									<img className="product-img" src={product.imageUrl} alt="" />
-								</div>
-								<div className="product-content">
-									<span className="product-name">{product.name}</span>
-									<span className="product-price">{product.price}</span>
-									<span className="product-seller">
-										<img src="images/icons/avatar.png" className="product-avatar" alt="" />
-										<span>{product.seller}</span>
-									</span>
-								</div>
+								<Link className="product-link" to={`/productPage/${product.id}`}>
+									<div>
+										<img className="product-img" src={product.imageUrl} alt={product.name} />
+									</div>
+									<div className="product-content">
+										<span className="product-name">{product.name}</span>
+										<span className="product-price">{product.price}</span>
+										<div className="product-footer">
+											<span className="product-seller">
+												<img src="images/icons/avatar.png" className="product-avatar" alt="{product.seller}" />
+												<span>{product.seller}</span>
+											</span>
+											<span className="product-date">상품등록일:   
+												{dayjs(product.createdAt).format('YY년MM월DD일:hh시-mm분-ss초')}
+											</span>
+										</div>
+									</div>
+								</Link>
 							</div>
 						);
 					})}
 				</div>
-			</div>
-			<div id="footer">
-				<a href="#">회사소개</a>
-				<a href="#">이용약관</a>
-				<a href="#">통신판매업신고번호:123-1234</a>
-				<a href="#">사업자등록번호:456-56-78951</a>
-				<a href="#">고객센터:456-78951</a>
 			</div>
 		</div>
 	);
