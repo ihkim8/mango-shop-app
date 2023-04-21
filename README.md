@@ -9,6 +9,12 @@ In the project directory, you can run:
 ### vercel
 https://mango-shop-app-ihkim8.vercel.app/
 
+### google analytics 측정 ID
+G-JKL5087HEX
+
+### 스트림 ID
+5108313927
+
 ### `npm start`
 
 Runs the app in the development mode.\
