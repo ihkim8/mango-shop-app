@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var API_URL = \"http://127.0.0.1:8080\";","map":{"version":3,"names":["API_URL"],"sources":["D:/frontend/mango-shop-app-0421/mango-shop-app/src/config/constants.js"],"sourcesContent":["export const API_URL=\"http://127.0.0.1:8080\";"],"mappings":"AAAA,OAAO,IAAMA,OAAO,GAAC,uBAAuB"},"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### vercel
+https://mango-shop-app-ihkim8.vercel.app/
+
 ### `npm start`
 
 Runs the app in the development mode.\
